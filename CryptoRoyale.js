@@ -48,11 +48,8 @@ var initialRoy = null;
                 var t = (new Date() - start) / (1000 * 60 * 60);
                 var royh = (roy - initialRoy) / t;
                 var usdh = royh * royValue;
-                if($("#roy").length) {
-                    $("#roy").html(royh.toFixed(2) + " ROY/h");
-                } else {
-                    $("#left b").parent().parent().append("<span id='roy'>"+ royh.toFixed(2) + " ROY/h</span>");
-                }
+                $("#roy").html(roy);
+                $("#royh").html(royh.toFixed(2));
             }
 
         }
@@ -185,6 +182,12 @@ function checkBoost(x, y, loot) {
 
 function initInterface() {
     var html = "<span id='span' style='position: absolute; top: 0; left: 0; z-index:999'>pause</span>";
+
+    html += "<span style='position: absolute; top: 50px; left: 0; z-index:999'><b>ROY</b></span>";
+    html += "<span id='roy' style='position: absolute; top: 65px; left: 0; z-index:999'>0</span>";
+
+    html += "<span style='position: absolute; top: 115px; left: 0; z-index:999'><b>ROY/h</b></span>";
+    html += "<span id='royh' style='position: absolute; top: 130px; left: 0; z-index:999'>0</span>";
     $("body").prepend($(html));
     $(document).keypress(function(e) {
         pause = !pause;
